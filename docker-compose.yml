@@ -1,0 +1,29 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+
+  adminer:
+    image: adminer
+
+    restart: always
+    depends_on: 
+      - db
+    ports:
+      - 8080:8080
+
+  web:
+    image: smtripat/alpine-apache-php-fpm:latest
+    volumes:
+      - ./htdocs:/var/www/localhost/htdocs
+      - myvolumename:/var/local/myvolumename
+    ports:
+      - 8888:80
+volumes:
+  myvolumename: {}
