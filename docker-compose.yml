@@ -25,5 +25,11 @@ services:
       - myvolumename:/var/local/myvolumename
     ports:
       - 8888:80
+
+  counter:
+    build: ./counter
+    ports:
+      - '8081:8080'
+
 volumes:
   myvolumename: {}
