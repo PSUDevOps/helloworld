@@ -22,6 +22,7 @@ services:
     image: smtripat/alpine-apache-php-fpm:latest
     volumes:
       - ./htdocs:/var/www/localhost/htdocs
+      - ./conf/cool.conf:/etc/apache2/conf.d/cool.conf
       - myvolumename:/var/local/myvolumename
     ports:
       - 8888:80
@@ -29,7 +30,7 @@ services:
   counter:
     build: ./counter
     ports:
-      - '8081:8080'
+      - 8081:8080
 
 volumes:
   myvolumename: {}
