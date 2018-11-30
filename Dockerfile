@@ -1,2 +1,2 @@
-FROM scratch
+FROM busybox:latest
 CMD ["sh"]
